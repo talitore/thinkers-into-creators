@@ -7,6 +7,7 @@ public class ZombieSpawner : MonoBehaviour {
 	public GameObject zombie_prefab;
 	public GameObject spawner1;
 	public GameObject spawner2;
+	public GameObject spawner3;
 
 	private float lastSpawnTime;
 	private int lastSpawnLoc = 2;
@@ -21,12 +22,15 @@ public class ZombieSpawner : MonoBehaviour {
 		if (Time.time - lastSpawnTime > SpawnTimer) {
 			lastSpawnTime = Time.time;
 			Vector3 spawnPos;
-			if (lastSpawnLoc == 2) {
+			if (lastSpawnLoc == 3) {
+				spawnPos = spawner2.transform.position;
+				lastSpawnLoc = 2;
+			} else if (lastSpawnLoc == 2) {
 				spawnPos = spawner1.transform.position;
 				lastSpawnLoc = 1;
 			} else {
-				spawnPos = spawner2.transform.position;
-				lastSpawnLoc = 2;
+				spawnPos = spawner3.transform.position;
+				lastSpawnLoc = 3;
 			}
 			GameObject zombie = Instantiate(zombie_prefab, spawnPos, Quaternion.identity) as GameObject;
 			zombie.GetComponent<Animator>().SetInteger("randomIdle",Random.Range (1,2));

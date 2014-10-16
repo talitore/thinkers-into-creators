@@ -3,17 +3,17 @@ using System.Collections;
 
 public class Done_DestroyByContact : MonoBehaviour
 {
+	public GameObject enemyExplosion;
 	void Start ()
 	{
 	}
 
 	void OnTriggerEnter (Collider other)
 	{
-		Debug.Log ("Hit something");
 		if (other.tag == "Enemy")
 		{
-			Debug.Log("Hit enemy!");
-			return;
+			Instantiate(enemyExplosion, other.transform.position, Quaternion.identity);
+			Destroy(other.gameObject);
 		}
 	}
 }
