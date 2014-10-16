@@ -7,6 +7,7 @@ var canControl : boolean = true;
 
 var useFixedUpdate : boolean = true;
 
+
 // For the next variables, @System.NonSerialized tells Unity to not serialize the variable or show it in the inspector view.
 // Very handy for organization!
 
